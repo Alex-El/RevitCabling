@@ -5,11 +5,17 @@ using Autodesk.Revit.UI;
 namespace RevitCabling
 {
     [Transaction(TransactionMode.Manual)]
-    public class Application : IExternalCommand
+    public class Application : IExternalApplication
     {
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        public Result OnShutdown(UIControlledApplication application)
         {
-            TaskDialog.Show("Test AddIn", "Halo 2022!");
+            return Result.Succeeded;
+        }
+
+        public Result OnStartup(UIControlledApplication application)
+        {
+            Host.Initialize(application);
+            RibbonController.CreatePanel(application);
 
             return Result.Succeeded;
         }

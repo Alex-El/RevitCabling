@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RevitCabling.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AssembleName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RevitCabling.dll</Value>
+    </Setting>
+    <Setting Name="DebugAppPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\tmp\revit</Value>
+    </Setting>
+    <Setting Name="ReleaseAppPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Autodesk\Revit\Addins\2022\RevitCabling</Value>
+    </Setting>
+    <Setting Name="ImageFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Image</Value>
+    </Setting>
+    <Setting Name="EntryPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RevitCabling.Startup</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
