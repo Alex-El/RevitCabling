@@ -52,7 +52,7 @@ namespace RevitCabling.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Image")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Images")]
         public string ImageFolderName {
             get {
                 return ((string)(this["ImageFolderName"]));
@@ -65,6 +65,24 @@ namespace RevitCabling.Properties {
         public string EntryPoint {
             get {
                 return ((string)(this["EntryPoint"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6D57E667-6983-4741-A865-521E2DA01EBA")]
+        public string DockableGUID {
+            get {
+                return ((string)(this["DockableGUID"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cabling Plugin")]
+        public string DockableName {
+            get {
+                return ((string)(this["DockableName"]));
             }
         }
     }

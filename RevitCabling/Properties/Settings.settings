@@ -12,10 +12,16 @@
       <Value Profile="(Default)">Autodesk\Revit\Addins\2022\RevitCabling</Value>
     </Setting>
     <Setting Name="ImageFolderName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Image</Value>
+      <Value Profile="(Default)">Images</Value>
     </Setting>
     <Setting Name="EntryPoint" Type="System.String" Scope="Application">
       <Value Profile="(Default)">RevitCabling.Startup</Value>
+    </Setting>
+    <Setting Name="DockableGUID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">6D57E667-6983-4741-A865-521E2DA01EBA</Value>
+    </Setting>
+    <Setting Name="DockableName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Cabling Plugin</Value>
     </Setting>
   </Settings>
 </SettingsFile>

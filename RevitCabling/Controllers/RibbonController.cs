@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace RevitCabling
+namespace RevitCabling.Controllers
 {
-    internal static class RibbonController
+    internal class RibbonController
     {
-        public static void CreatePanel(UIControlledApplication application)
+        public RibbonController(UIControlledApplication application)
         {
             string iconFullName32 = Path.Combine(Host.Settings.IconPath, "CableTray32.png");
             string iconFullName16 = Path.Combine(Host.Settings.IconPath, "CableTray16.png");
