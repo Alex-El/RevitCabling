@@ -56,7 +56,8 @@
             Grid.Column="0"
             Grid.Row="0"
             Style="{StaticResource ButtonStyle}"
-            Margin="10 5">
+            Margin="10 5"
+            Command="{Binding TrayLoadingCommand}">
             <TextBlock Text="{x:Static p:Resources.TrayLoading}"/>
         </Button>
 
@@ -64,7 +65,8 @@
             Grid.Column="1"
             Grid.Row="0"
             Style="{StaticResource ButtonStyle}"
-            Margin="10 5">
+            Margin="10 5"
+            Command="{Binding CablingCommand}">
             <TextBlock Text="{x:Static p:Resources.Cabling}"/>
         </Button>
 
@@ -73,7 +75,8 @@
             Grid.Row="1"
             Grid.ColumnSpan="2"
             Style="{StaticResource ButtonStyle}"
-            Margin="10 8">
+            Margin="10 8"
+            Command="{Binding ClearCommand}">
             <TextBlock Text="{x:Static p:Resources.Clear}"/>
         </Button>
 
@@ -82,7 +85,8 @@
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Style="{StaticResource ButtonStyle}"
-            Margin="10 8">
+            Margin="10 8"
+            Command="{Binding OkCommand}">
             <TextBlock Text="{x:Static p:Resources.Ok}"/>
         </Button>
 

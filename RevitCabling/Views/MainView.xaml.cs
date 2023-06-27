@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using RevitCabling.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace RevitCabling.Views
         public MainView()
         {
             InitializeComponent();
-            //button.Content = Properties.Resources.Test;
+            DataContext = new MainViewModel();
         }
 
         public void SetupDockablePane(DockablePaneProviderData data)
@@ -46,11 +47,6 @@ namespace RevitCabling.Views
         public void Dispose()
         {
             this.Dispose();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            //button.Content = Properties.Resources.Test;
         }
     }
 }

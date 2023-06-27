@@ -56,6 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\CablingCommand.cs" />
+    <Compile Include="Commands\ClearCablingCommand.cs" />
+    <Compile Include="Commands\ClearTrayLoadingCommand.cs" />
+    <Compile Include="Commands\OkCablingCommand.cs" />
+    <Compile Include="Commands\OkTrayLoadingCommand.cs" />
+    <Compile Include="Commands\TrayLoadingCommand.cs" />
     <Compile Include="Controllers\DockablePanController.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
