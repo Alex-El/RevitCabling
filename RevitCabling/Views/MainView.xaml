@@ -2,12 +2,89 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:p="clr-namespace:RevitCabling.Properties"
              xmlns:local="clr-namespace:RevitCabling.Views"
              mc:Ignorable="d" 
-             Height="200" Width="350"
-             Background="LightGray">
-    <Grid>
+             Height="125" Width="220"
+             Background="White">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="MainBackground" Color="White"/>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#cdd2d9"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="#383e47" />
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
+            </Style.Resources>
             
+        </Style>
+        
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*" MinHeight="50"/>
+            <RowDefinition Height="0.3*" MinHeight="37"/>
+            <RowDefinition Height="0.3*" MinHeight="37"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" MinWidth="110"/>
+            <ColumnDefinition Width="0.5*" MinWidth="110"/>
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
+            Background="{StaticResource MainBackground}"
+            />
+
+        <Button
+            Grid.Column="0"
+            Grid.Row="0"
+            Style="{StaticResource ButtonStyle}"
+            Margin="10 5">
+            <TextBlock Text="{x:Static p:Resources.TrayLoading}"/>
+        </Button>
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="0"
+            Style="{StaticResource ButtonStyle}"
+            Margin="10 5">
+            <TextBlock Text="{x:Static p:Resources.Cabling}"/>
+        </Button>
+
+        <Button
+            Grid.Column="0"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource ButtonStyle}"
+            Margin="10 8">
+            <TextBlock Text="{x:Static p:Resources.Clear}"/>
+        </Button>
+
+        <Button
+            Grid.Column="0"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource ButtonStyle}"
+            Margin="10 8">
+            <TextBlock Text="{x:Static p:Resources.Ok}"/>
+        </Button>
+
     </Grid>
 </Page>

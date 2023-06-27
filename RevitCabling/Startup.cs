@@ -14,7 +14,7 @@ namespace RevitCabling
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            TaskDialog.Show("Cabling", "Go!");
+            Host.DockablePanel.Show();
 
             return Result.Succeeded;
         }

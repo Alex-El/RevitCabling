@@ -24,18 +24,33 @@ namespace RevitCabling.Views
         public MainView()
         {
             InitializeComponent();
+            //button.Content = Properties.Resources.Test;
         }
 
         public void SetupDockablePane(DockablePaneProviderData data)
         {
-            data.FrameworkElement = this as FrameworkElement;
+            int screenW = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
+            int screenH = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
 
-            data.InitialState.DockPosition = DockPosition.Right;
+            int winH = 150;
+            int winW = 250;
+            int startX = (screenW / 2) - (winW / 2);
+            int startY = (screenH / 2) - (winH / 2);
+
+            data.FrameworkElement = this as FrameworkElement;
+            var rectangle = new Autodesk.Revit.DB.Rectangle(startX, startY, (startX + winW), (startY + winH));
+            data.InitialState.DockPosition = DockPosition.Floating;
+            data.InitialState.SetFloatingRectangle(rectangle);
         }
 
         public void Dispose()
         {
             this.Dispose();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            //button.Content = Properties.Resources.Test;
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,10 +15,24 @@ namespace RevitCabling
         public string IconPath { get; private set; }
         public string AppDllFullName { get; private set; }
         public string EntryPointUI { get; private set; }
+        public LanguageType LanguageType { get; private set; }
+        
 
         public Settings(UIControlledApplication application)
         {
-            var lang = application.ControlledApplication.Language;
+            LanguageType = application.ControlledApplication.Language;
+            //if (LanguageType == LanguageType.Russian)
+            //{
+            //    var ci = new System.Globalization.CultureInfo("ru-RU");
+            //    System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            //    System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            //}
+            //else
+            //{
+            //    var ci = new System.Globalization.CultureInfo("en-IE");
+            //    System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            //    System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            //}
 
             string appPath = Properties.Settings.Default.DebugAppPath;
 

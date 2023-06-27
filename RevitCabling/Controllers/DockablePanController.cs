@@ -11,9 +11,12 @@ namespace RevitCabling.Controllers
     internal class DockablePanController
     {
         public DockablePaneId PanelId { get; private set; }
+        UIControlledApplication _application;
 
         public DockablePanController(UIControlledApplication application)
         {
+            _application = application;
+
             var data = new DockablePaneProviderData();
             var dPage = new MainView();
 
@@ -23,7 +26,18 @@ namespace RevitCabling.Controllers
             string paneName = Properties.Settings.Default.DockableName;
 
             application.RegisterDockablePane(PanelId, paneName, dPage as IDockablePaneProvider);
+        }
 
+        public void Hide()
+        {
+            DockablePane dockablePane = _application.GetDockablePane(PanelId);
+            dockablePane.Hide();
+        }
+
+        public void Show()
+        {
+            DockablePane dockablePane = _application.GetDockablePane(PanelId);
+            dockablePane.Show();
         }
     }
 }

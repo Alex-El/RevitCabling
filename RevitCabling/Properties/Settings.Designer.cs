@@ -70,7 +70,7 @@ namespace RevitCabling.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6D57E667-6983-4741-A865-521E2DA01EBA")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6D57E667-6983-4741-A865-521E2DA01E08")]
         public string DockableGUID {
             get {
                 return ((string)(this["DockableGUID"]));
