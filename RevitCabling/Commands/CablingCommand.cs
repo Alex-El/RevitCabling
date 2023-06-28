@@ -11,13 +11,16 @@ namespace RevitCabling.Commands
     {
         MainViewModel _mainVM { get; }
 
-        public CablingCommand(MainViewModel mainVM)
+        public CablingCommand(MainViewModel mainVM) : 
+            base((obj) => mainVM.CurrentUIMode == UIMode.Default )
         {
             _mainVM = mainVM;
         }
 
         public override void Execute(object parameter)
         {
+            _mainVM.OnBusy();
+            // BL
             _mainVM.OnCablingExecute();
         }
     }

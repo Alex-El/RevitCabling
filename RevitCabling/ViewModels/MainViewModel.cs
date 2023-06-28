@@ -15,6 +15,7 @@ namespace RevitCabling.ViewModels
         public BaseCommand CablingCommand { get => _cablingCommand; }
         public BaseCommand ClearCommand { get => _clearCommand; }
         public BaseCommand OkCommand { get => _okCommand; }
+        public UIMode CurrentUIMode;
 
 
         public MainViewModel()
@@ -23,6 +24,8 @@ namespace RevitCabling.ViewModels
             _cablingCommand = new CablingCommand(this);
             _clearCommand = new ClearCablingCommand(this);
             _okCommand = new OkCablingCommand(this);
+
+            CurrentUIMode = UIMode.Default;
         }
 
         BaseCommand _trayLoadingCommand;
@@ -32,22 +35,35 @@ namespace RevitCabling.ViewModels
 
         public void OnCablingExecute()
         {
-
+            CurrentUIMode = UIMode.Cabling;
+            _clearCommand = new ClearCablingCommand(this);
+            _okCommand = new OkCablingCommand(this);
+            OnPropertyChanged("ClearCommand");
+            OnPropertyChanged("OkCommand");
         }
 
         public void OnTrayLoadingExecute()
         {
-
+            CurrentUIMode = UIMode.TrayLoading;
+            _clearCommand = new ClearTrayLoadingCommand(this);
+            _okCommand = new OkTrayLoadingCommand(this);
+            OnPropertyChanged("ClearCommand");
+            OnPropertyChanged("OkCommand");
         }
 
         public void OnClearExecute()
         {
-
+            CurrentUIMode = UIMode.Default;
         }
 
         public void OnOkExecute()
         {
+            CurrentUIMode = UIMode.Default;
+        }
 
+        public void OnBusy()
+        {
+            CurrentUIMode = UIMode.NonActive;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -56,5 +72,13 @@ namespace RevitCabling.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+    }
+
+    enum UIMode
+    {
+        Default,
+        Cabling,
+        TrayLoading,
+        NonActive
     }
 }

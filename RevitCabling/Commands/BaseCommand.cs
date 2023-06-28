@@ -9,18 +9,24 @@ namespace RevitCabling.Commands
 {
     internal abstract class BaseCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        Func<object, bool> _canExecute;
+
+        public BaseCommand(Func<object, bool> canExecute = null)
+        {
+            this._canExecute = canExecute;
+        }
 
         public virtual bool CanExecute(object parameter)
         {
-            return true;
+            return this._canExecute == null || this._canExecute(parameter);
         }
 
         public abstract void Execute(object parameter);
 
-        protected void OnCanExecuteChanged(object parameter)
+        public event EventHandler CanExecuteChanged
         {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
     }
 }

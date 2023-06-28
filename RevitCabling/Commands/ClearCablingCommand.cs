@@ -11,13 +11,16 @@ namespace RevitCabling.Commands
     {
         MainViewModel _mainVM;
 
-        public ClearCablingCommand(MainViewModel mainVM)
+        public ClearCablingCommand(MainViewModel mainVM) : 
+            base((obj) => mainVM.CurrentUIMode == UIMode.Cabling || mainVM.CurrentUIMode == UIMode.TrayLoading)
         {
             _mainVM = mainVM;
         }
 
         public override void Execute(object parameter)
         {
+            _mainVM.OnBusy();
+            //BL
             _mainVM.OnClearExecute();
         }
     }
