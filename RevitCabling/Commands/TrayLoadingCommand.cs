@@ -1,9 +1,6 @@
-﻿using RevitCabling.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autodesk.Revit.UI;
+using RevitCabling.Services;
+using RevitCabling.ViewModels;
 
 namespace RevitCabling.Commands
 {
@@ -20,7 +17,11 @@ namespace RevitCabling.Commands
         public override void Execute(object parameter)
         {
             _mainVM.OnBusy();
+
             // BL
+            Host.ExecuteService<GetAllCableTraysService>();
+            //---
+
             _mainVM.OnTrayLoadingExecute();
         }
     }

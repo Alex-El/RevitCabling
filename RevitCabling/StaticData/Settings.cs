@@ -8,7 +8,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCabling
+namespace RevitCabling.StaticData
 {
     internal class Settings
     {

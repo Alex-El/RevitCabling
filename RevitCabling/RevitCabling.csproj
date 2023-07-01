@@ -78,7 +78,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Controllers\RibbonController.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Services\ExternalEventCommand.cs" />
+    <Compile Include="Services\GetAllCableTraysService.cs" />
+    <Compile Include="StaticData\Project.cs" />
+    <Compile Include="StaticData\Settings.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">

@@ -3,6 +3,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using RevitCabling.Controllers;
+using RevitCabling.Services;
 using System;
 
 namespace RevitCabling
@@ -13,6 +14,10 @@ namespace RevitCabling
         public Result OnStartup(UIControlledApplication application)
         {
             Host.Initialize(application);
+
+            // Services
+            Host.AddServiceEvent<GetAllCableTraysService>(new GetAllCableTraysService("GetAllCableTrays"));
+            //--------
 
             application.ControlledApplication.DocumentOpened += OnDocumentOpened;
 
