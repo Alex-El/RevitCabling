@@ -124,6 +124,24 @@ namespace RevitCabling.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Короб.
+        /// </summary>
+        public static string PartOfCondutTypeName {
+            get {
+                return ResourceManager.GetString("PartOfCondutTypeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выберите электропотребитель.
+        /// </summary>
+        public static string SelectFixtureToolTip {
+            get {
+                return ResourceManager.GetString("SelectFixtureToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Загруженность лотков.
         /// </summary>
         public static string TrayLoading {

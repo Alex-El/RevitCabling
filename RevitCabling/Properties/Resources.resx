@@ -138,6 +138,12 @@
   <data name="Ok" xml:space="preserve">
     <value>ОК</value>
   </data>
+  <data name="PartOfCondutTypeName" xml:space="preserve">
+    <value>Короб</value>
+  </data>
+  <data name="SelectFixtureToolTip" xml:space="preserve">
+    <value>Выберите электропотребитель</value>
+  </data>
   <data name="TrayLoading" xml:space="preserve">
     <value>Загруженность лотков</value>
   </data>

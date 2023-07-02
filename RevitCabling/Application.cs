@@ -20,6 +20,10 @@ namespace RevitCabling
             Host.AddServiceEvent<SetSharedParamService>(new SetSharedParamService("SetSharedParam"));
             Host.AddServiceEvent<DrawTextNotesService>(new DrawTextNotesService("DrawTextNotes"));
             Host.AddServiceEvent<DeleteTextNotesService>(new DeleteTextNotesService("DeleteTextNotes"));
+            Host.AddServiceEvent<ReadCircuitPathService>(new ReadCircuitPathService("ReadCircuitPath"));
+            Host.AddServiceEvent<DrawCircuitPathService>(new DrawCircuitPathService("DrawCircuitPath"));
+            Host.AddServiceEvent<DeleteCircuitPathService>(new DeleteCircuitPathService("DeleteCircuitPath"));
+            Host.AddServiceEvent<SelectFixtureService>(new SelectFixtureService("SelectFixture"));
             //--------
 
             application.ControlledApplication.DocumentOpened += OnDocumentOpened;

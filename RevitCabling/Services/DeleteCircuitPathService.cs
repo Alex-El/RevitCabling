@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class DeleteTextNotesService : ExternalEventCommand
+    internal class DeleteCircuitPathService : ExternalEventCommand
     {
-        public DeleteTextNotesService(string name) : base(name) { }
+        public DeleteCircuitPathService(string name) : base(name) { }
 
         public override void Execute()
         {
             var doc = UIApplication.ActiveUIDocument.Document;
 
-            using (Transaction tr = new Transaction(doc, "Delete text notes"))
+            using (Transaction tr = new Transaction(doc, "Delete circuit path"))
             {
                 try
                 {
                     tr.Start();
 
-                    while (Host.ProjectData.TextNoteIds.Count > 0)
+                    while (Host.ProjectData.PathElementIds.Count > 0)
                     {
-                        ElementId id = Host.ProjectData.TextNoteIds[0];
+                        ElementId id = Host.ProjectData.PathElementIds[0];
                         doc.Delete(id);
-                        Host.ProjectData.TextNoteIds.RemoveAt(0);
+                        Host.ProjectData.PathElementIds.RemoveAt(0);
                     }
 
                     tr.Commit();

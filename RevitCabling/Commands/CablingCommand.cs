@@ -17,7 +17,9 @@ namespace RevitCabling.Commands
         {
             _mainVM.OnBusy();
             // BL
-
+            Host.ExecuteService<SelectFixtureService>();
+            Host.ExecuteService<ReadCircuitPathService>();
+            Host.ExecuteService<DrawCircuitPathService>();
             //---
             _mainVM.OnCablingExecute();
         }

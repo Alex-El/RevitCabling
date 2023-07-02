@@ -64,6 +64,7 @@
     <Compile Include="Commands\OkTrayLoadingCommand.cs" />
     <Compile Include="Commands\TrayLoadingCommand.cs" />
     <Compile Include="Controllers\DockablePanController.cs" />
+    <Compile Include="Helpers\ElectricalFixtureFilter.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -78,10 +79,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Controllers\RibbonController.cs" />
+    <Compile Include="Services\DeleteCircuitPathService.cs" />
     <Compile Include="Services\DeleteTextNotesService.cs" />
+    <Compile Include="Services\DrawCircuitPathService.cs" />
     <Compile Include="Services\DrawTextNotesService.cs" />
     <Compile Include="Services\ExternalEventCommand.cs" />
     <Compile Include="Services\GetAllCableTraysService.cs" />
+    <Compile Include="Services\ReadCircuitPathService.cs" />
+    <Compile Include="Services\SelectFixtureService.cs" />
     <Compile Include="Services\SetSharedParamService.cs" />
     <Compile Include="StaticData\Project.cs" />
     <Compile Include="StaticData\Settings.cs" />
