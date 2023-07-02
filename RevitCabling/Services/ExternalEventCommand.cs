@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 using System;
+using System.Windows.Media;
 
 namespace RevitCabling.Services
 {
@@ -21,7 +22,17 @@ namespace RevitCabling.Services
             {
                 Execute();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                if (String.IsNullOrEmpty(msg))
+                {
+                    msg = "ExternalEventCommand Exception";
+                }
+                msg += '\n' + Properties.Resources.ErrorMessage;
+
+                TaskDialog.Show("Error", msg);
+            }
         }
 
         public string GetName()

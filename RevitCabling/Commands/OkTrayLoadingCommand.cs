@@ -1,9 +1,5 @@
-﻿using RevitCabling.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RevitCabling.Services;
+using RevitCabling.ViewModels;
 
 namespace RevitCabling.Commands
 {
@@ -21,6 +17,8 @@ namespace RevitCabling.Commands
         {
             _mainVM.OnBusy();
             // BL
+            Host.ExecuteService<DeleteTextNotesService>();
+            //---
             _mainVM.OnOkExecute();
         }
     }

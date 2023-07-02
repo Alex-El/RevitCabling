@@ -17,11 +17,10 @@ namespace RevitCabling.Commands
         public override void Execute(object parameter)
         {
             _mainVM.OnBusy();
-
             // BL
             Host.ExecuteService<GetAllCableTraysService>();
+            Host.ExecuteService<DrawTextNotesService>();
             //---
-
             _mainVM.OnTrayLoadingExecute();
         }
     }

@@ -61,6 +61,24 @@ namespace RevitCabling.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cabling.
+        /// </summary>
+        public static string CableParameterGroupName {
+            get {
+                return ResourceManager.GetString("CableParameterGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cables.
+        /// </summary>
+        public static string CableParameterName {
+            get {
+                return ResourceManager.GetString("CableParameterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Прокладка кабеля.
         /// </summary>
         public static string Cabling {
@@ -75,6 +93,15 @@ namespace RevitCabling.Properties {
         public static string Clear {
             get {
                 return ResourceManager.GetString("Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы можете отправить журнал ошибок автору..
+        /// </summary>
+        public static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
             }
         }
         
