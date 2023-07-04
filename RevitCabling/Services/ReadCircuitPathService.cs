@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using Autodesk.Revit.UI;
+using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class ReadCircuitPathService : ExternalEventCommand
+    internal class ReadCircuitPathService : ExternalEventService
     {
         public ReadCircuitPathService(string name) : base(name) { }
 
-        public override void Execute()
+        protected override APIServiceResult Execute(UIApplication app)
         {
             if (Host.ProjectData.CurrentFixture == null)
             {
-                return;
+                return APIServiceResult.Failed;
             }
                 
-            var doc = UIApplication.ActiveUIDocument.Document;
+            var doc = app.ActiveUIDocument.Document;
             var fi = doc.GetElement(Host.ProjectData.CurrentFixture) as FamilyInstance;
 
             ISet<ElectricalSystem> elSys = fi.MEPModel.GetElectricalSystems();
@@ -27,10 +28,12 @@ namespace RevitCabling.Services
             if (system == null)
             {
                 TaskDialog.Show("Warning", "No system on the fixture.");
-                return;
+                return APIServiceResult.Failed;
             }
 
             Host.ProjectData.CurrentPath = system.GetCircuitPath().ToList();
+
+            return APIServiceResult.Succeeded;
         }
     }
 }

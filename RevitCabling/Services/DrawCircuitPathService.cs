@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.UI;
 using System;
+using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class DrawCircuitPathService : ExternalEventCommand
+    internal class DrawCircuitPathService : ExternalEventService
     {
         public DrawCircuitPathService(string name) : base(name) { }
 
-        public override void Execute()
+        protected override APIServiceResult Execute(UIApplication app)
         {
             if (Host.ProjectData.CurrentFixture ==  null)
             {
-                return;
+                return APIServiceResult.Failed;
             }
 
-            var doc = UIApplication.ActiveUIDocument.Document;
+            var doc = app.ActiveUIDocument.Document;
 
             List<ConduitType> conTypes = new FilteredElementCollector(doc)
                 .OfClass(typeof(ConduitType))
@@ -30,7 +31,7 @@ namespace RevitCabling.Services
             if (conduitType == null)
             {
                 TaskDialog.Show("Error", $"No conduit type name with {Properties.Resources.PartOfCondutTypeName}");
-                return;
+                return APIServiceResult.Failed;
             }
 
             ElementId levelId = doc.GetElement(Host.ProjectData.CurrentFixture.ElementId).LevelId;
@@ -68,6 +69,8 @@ namespace RevitCabling.Services
                 }
 
             }
+
+            return APIServiceResult.Succeeded;
         }
     }
 }

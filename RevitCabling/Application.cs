@@ -17,7 +17,6 @@ namespace RevitCabling
 
             // Services
             Host.AddServiceEvent<GetAllCableTraysService>(new GetAllCableTraysService("GetAllCableTrays"));
-            Host.AddServiceEvent<SetSharedParamService>(new SetSharedParamService("SetSharedParam"));
             Host.AddServiceEvent<DrawTextNotesService>(new DrawTextNotesService("DrawTextNotes"));
             Host.AddServiceEvent<DeleteTextNotesService>(new DeleteTextNotesService("DeleteTextNotes"));
             Host.AddServiceEvent<ReadCircuitPathService>(new ReadCircuitPathService("ReadCircuitPath"));

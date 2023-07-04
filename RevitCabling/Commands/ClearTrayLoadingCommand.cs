@@ -13,12 +13,10 @@ namespace RevitCabling.Commands
             _mainVM = mainVM;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             _mainVM.OnBusy();
-            // BL
-            Host.ExecuteService<DeleteTextNotesService>();
-            //---
+            _ = await Host.GetService<DeleteTextNotesService>().Run();
             _mainVM.OnClearExecute();
         }
     }

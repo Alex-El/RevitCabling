@@ -83,11 +83,11 @@
     <Compile Include="Services\DeleteTextNotesService.cs" />
     <Compile Include="Services\DrawCircuitPathService.cs" />
     <Compile Include="Services\DrawTextNotesService.cs" />
-    <Compile Include="Services\ExternalEventCommand.cs" />
+    <Compile Include="Services\ExternalEventService.cs" />
     <Compile Include="Services\GetAllCableTraysService.cs" />
     <Compile Include="Services\ReadCircuitPathService.cs" />
     <Compile Include="Services\SelectFixtureService.cs" />
-    <Compile Include="Services\SetSharedParamService.cs" />
+    <Compile Include="Helpers\SetSharedParamRevitCommand.cs" />
     <Compile Include="StaticData\Project.cs" />
     <Compile Include="StaticData\Settings.cs" />
     <Compile Include="Startup.cs" />

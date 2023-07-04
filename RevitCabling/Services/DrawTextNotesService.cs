@@ -2,16 +2,17 @@
 using Autodesk.Revit.DB.Electrical;
 using Autodesk.Revit.UI;
 using System;
+using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class DrawTextNotesService : ExternalEventCommand
+    internal class DrawTextNotesService : ExternalEventService
     {
         public DrawTextNotesService(string name) : base(name) { }
 
-        public override void Execute()
+        protected override APIServiceResult Execute(UIApplication app)
         {
-            var doc = UIApplication.ActiveUIDocument.Document;
+            var doc = app.ActiveUIDocument.Document;
 
             using (Transaction tr = new Transaction(doc, "Create text notes"))
             {
@@ -41,6 +42,8 @@ namespace RevitCabling.Services
                 }
 
             }
+
+            return APIServiceResult.Succeeded;
         }
 
         private TextNote CreateTextNote(Document doc, CableTray cableTray, string sharedParamValue)

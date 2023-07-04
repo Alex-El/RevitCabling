@@ -1,33 +1,25 @@
 ﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Electrical;
 using Autodesk.Revit.UI;
+using RevitCabling.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
 
-namespace RevitCabling.Services
+
+namespace RevitCabling.Helpers
 {
-    internal class SetSharedParamService : ExternalEventCommand
+    static class SetSharedParamRevitCommand
     {
-        public SetSharedParamService(string name) : base(name) { }
-
-        public override void Execute()
+        public static Result Execute(UIApplication app)
         {
-            //Autodesk.Revit.DB.Document doc = UIApplication.ActiveUIDocument.Document;
-
-            DefinitionFile dfile = UIApplication.Application.OpenSharedParameterFile();
+            DefinitionFile dfile = app.Application.OpenSharedParameterFile();
 
             if (dfile == null )
             {
                 TaskDialog.Show("Error", "Shared parameter file not found");
-                return;
+                return Result.Failed;
             }
 
-            if ( SetNewParameterToInstanceCableTray(UIApplication, dfile))
+            if ( SetNewParameterToInstanceCableTray(app, dfile))
             {
                 //TODO write to log: "Setup shares params"
                 //TaskDialog.Show("Error", "OK");
@@ -37,9 +29,11 @@ namespace RevitCabling.Services
                 //TODO write to log: "Shared params already exists"
                 //TaskDialog.Show("Error", "Not OK");
             }
+
+            return Result.Succeeded;
         }
 
-         bool SetNewParameterToInstanceCableTray(UIApplication app, DefinitionFile myDefinitionFile)
+         static bool SetNewParameterToInstanceCableTray(UIApplication app, DefinitionFile myDefinitionFile)
          {
             // create a new group in the shared parameters file
             DefinitionGroups shareParamGroups = myDefinitionFile.Groups;

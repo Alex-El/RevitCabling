@@ -1,6 +1,7 @@
 ﻿using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
 using RevitCabling.Controllers;
+using RevitCabling.Services;
 using RevitCabling.StaticData;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,7 @@ namespace RevitCabling
         public static DockablePanController DockablePanel { get; private set; }
         public static Project ProjectData { get; private set; }
 
-        static Dictionary<Type, ExternalEvent> _events = new Dictionary<Type, ExternalEvent>();
-        static Queue<ExternalEvent> ExEH = new Queue<ExternalEvent>();
+        static Dictionary<Type, ExternalEventService> _events = new Dictionary<Type, ExternalEventService>();
 
         public static void Initialize(UIControlledApplication application) 
         {  
@@ -23,32 +23,14 @@ namespace RevitCabling
             RibbonPanel = new RibbonController(application);
             DockablePanel = new DockablePanController(application);
             ProjectData = new Project();
-
-            application.Idling += EventRase;
         }
 
-        private static void EventRase(object sender, IdlingEventArgs e)
+        public static void AddServiceEvent<T>(ExternalEventService eventHandler) where T : class
         {
-            if (ExEH.Count > 0)
-            {
-                ExternalEvent exeh = ExEH.Dequeue();
-                exeh.Raise();
-                return;
-            }
+            _events[typeof(T)] = eventHandler;
         }
 
-        public static void AddServiceEvent<T>(IExternalEventHandler eventHandler) where T : class
-        {
-            _events[typeof(T)] = ExternalEvent.Create(eventHandler);
-        }
-
-        public static void ExecuteService<T>() where T : class
-        {
-            ExternalEvent externalEvent = _events[typeof(T)];
-            ExEH.Enqueue(externalEvent);
-        }
-
-        static ExternalEvent GetServiceEvent<T>() where T : class
+        public static ExternalEventService GetService<T>() where T : class
         {
             return _events[typeof(T)];
         }

@@ -14,14 +14,23 @@ namespace RevitCabling.Commands
             _mainVM = mainVM;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             _mainVM.OnBusy();
-            // BL
-            Host.ExecuteService<GetAllCableTraysService>();
-            Host.ExecuteService<DrawTextNotesService>();
-            //---
-            _mainVM.OnTrayLoadingExecute();
+            var getAllTraySrvc = Host.GetService<GetAllCableTraysService>();
+            var drawNotesSrvc = Host.GetService<DrawTextNotesService>();
+
+            var read_result = await getAllTraySrvc.Run();
+
+            if (read_result == APIServiceResult.Succeeded)
+            {
+                _ = await drawNotesSrvc.Run();
+                _mainVM.OnTrayLoadingExecute();
+            }
+            else
+            {
+                _mainVM.OnOkExecute();
+            }
         }
     }
 }

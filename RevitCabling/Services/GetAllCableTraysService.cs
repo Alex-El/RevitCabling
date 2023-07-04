@@ -2,23 +2,24 @@
 using Autodesk.Revit.DB.Electrical;
 using Autodesk.Revit.UI;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class GetAllCableTraysService : ExternalEventCommand
+    internal class GetAllCableTraysService : ExternalEventService
     {
-        public GetAllCableTraysService(string name) : base(name) { }
+        public GetAllCableTraysService(string serviceName) : base(serviceName) { }
 
-        public override void Execute()
+        protected override APIServiceResult Execute(UIApplication app)
         {
-            Autodesk.Revit.DB.Document doc = UIApplication.ActiveUIDocument.Document;
+            Autodesk.Revit.DB.Document doc = app.ActiveUIDocument.Document;
 
             Host.ProjectData.CableTrays = new FilteredElementCollector(doc)
                 .OfClass(typeof(CableTray))
                 .Cast<CableTray>()
                 .ToList();
 
-            //TaskDialog.Show("Test", $"Cable tray count = {Host.ProjectData.CableTrays.Count}");
+            return APIServiceResult.Succeeded;
         }
     }
 }

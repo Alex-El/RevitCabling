@@ -1,19 +1,16 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class DeleteCircuitPathService : ExternalEventCommand
+    internal class DeleteCircuitPathService : ExternalEventService
     {
         public DeleteCircuitPathService(string name) : base(name) { }
 
-        public override void Execute()
+        protected override APIServiceResult Execute(UIApplication app)
         {
-            var doc = UIApplication.ActiveUIDocument.Document;
+            var doc = app.ActiveUIDocument.Document;
 
             using (Transaction tr = new Transaction(doc, "Delete circuit path"))
             {
@@ -37,6 +34,8 @@ namespace RevitCabling.Services
                 }
 
             }
+
+            return APIServiceResult.Succeeded;
         }
     }
 }

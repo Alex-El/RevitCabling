@@ -25,7 +25,14 @@ namespace RevitCabling.Views
         public MainView()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            var vm = new MainViewModel();
+            DataContext = vm;
+            vm.GetFocusEvent += OnFocus;
+        }
+
+        private void OnFocus(object sender, EventArgs e)
+        {
+            this.Focus();
         }
 
         public void SetupDockablePane(DockablePaneProviderData data)

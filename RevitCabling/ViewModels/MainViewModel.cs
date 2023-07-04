@@ -40,6 +40,7 @@ namespace RevitCabling.ViewModels
             _okCommand = new OkCablingCommand(this);
             OnPropertyChanged("ClearCommand");
             OnPropertyChanged("OkCommand");
+            GetFocus();
         }
 
         public void OnTrayLoadingExecute()
@@ -49,16 +50,19 @@ namespace RevitCabling.ViewModels
             _okCommand = new OkTrayLoadingCommand(this);
             OnPropertyChanged("ClearCommand");
             OnPropertyChanged("OkCommand");
+            GetFocus();
         }
 
         public void OnClearExecute()
         {
             CurrentUIMode = UIMode.Default;
+            GetFocus();
         }
 
         public void OnOkExecute()
         {
             CurrentUIMode = UIMode.Default;
+            GetFocus();
         }
 
         public void OnBusy()
@@ -71,6 +75,12 @@ namespace RevitCabling.ViewModels
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public event EventHandler GetFocusEvent;
+        void GetFocus()
+        {
+            GetFocusEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 

@@ -13,15 +13,28 @@ namespace RevitCabling.Commands
             _mainVM = mainVM;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             _mainVM.OnBusy();
-            // BL
-            Host.ExecuteService<SelectFixtureService>();
-            Host.ExecuteService<ReadCircuitPathService>();
-            Host.ExecuteService<DrawCircuitPathService>();
-            //---
-            _mainVM.OnCablingExecute();
+
+            var selectFixtureSrvc = Host.GetService<SelectFixtureService>();
+            var readCircPathSrvc = Host.GetService<ReadCircuitPathService>();
+            var drawCircPathSrvc = Host.GetService<DrawCircuitPathService>();
+
+            var select_result = await selectFixtureSrvc.Run();
+
+            if (select_result == APIServiceResult.Succeeded)
+            {
+                var read_result = await readCircPathSrvc.Run();
+
+                if (read_result == APIServiceResult.Succeeded)
+                {
+                    _ = await drawCircPathSrvc.Run();
+                    _mainVM.OnCablingExecute();
+                    return;
+                }
+            }
+            _mainVM.OnOkExecute();
         }
     }
 }

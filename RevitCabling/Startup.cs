@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using RevitCabling.Services;
+using RevitCabling.Helpers;
 
 namespace RevitCabling
 {
@@ -11,9 +11,8 @@ namespace RevitCabling
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Host.DockablePanel.Show();
-            Host.ExecuteService<SetSharedParamService>();
 
-            return Result.Succeeded;
+            return SetSharedParamRevitCommand.Execute(commandData.Application);
         }
     }
 }
