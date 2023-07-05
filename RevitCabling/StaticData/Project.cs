@@ -10,6 +10,7 @@ namespace RevitCabling.StaticData
         public List<ElementId> TextNoteIds { get; set; } = new List<ElementId>();
         public List<XYZ> CurrentPath { get; set; } = new List<XYZ>();
         public Reference CurrentFixture { get; set; } = null;
+        public Reference CurrentCableTray { get; set; } = null;
         public List<ElementId> PathElementIds { get; set; } = new List<ElementId>();
     }
 }

@@ -18,8 +18,13 @@ namespace RevitCabling.Commands
             _mainVM.OnBusy();
 
             var selectFixtureSrvc = Host.GetService<SelectFixtureService>();
+            var selectCableTraySrvc = Host.GetService<SelectCableTrayService>();
             var readCircPathSrvc = Host.GetService<ReadCircuitPathService>();
             var drawCircPathSrvc = Host.GetService<DrawCircuitPathService>();
+            var editPathSrvc = Host.GetService<EditCircuitPathService>();
+            var deletePathSrvc = Host.GetService<DeleteCircuitPathService>();
+
+            Host.ProjectData.CurrentPath.Clear();
 
             var select_result = await selectFixtureSrvc.Run();
 
@@ -30,8 +35,21 @@ namespace RevitCabling.Commands
                 if (read_result == APIServiceResult.Succeeded)
                 {
                     _ = await drawCircPathSrvc.Run();
-                    _mainVM.OnCablingExecute();
-                    return;
+                    _mainVM.OnBusy();
+
+                    while (true)
+                    {
+                        var selectCTray_result = await selectCableTraySrvc.Run();
+
+                        if (selectCTray_result != APIServiceResult.Succeeded)
+                        {
+                            _mainVM.OnCablingExecute();
+                            return;
+                        }
+                        _ = await editPathSrvc.Run();
+                        _ = await deletePathSrvc.Run();
+                        _ = await drawCircPathSrvc.Run();
+                    }
                 }
             }
             _mainVM.OnOkExecute();

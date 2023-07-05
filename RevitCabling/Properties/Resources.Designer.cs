@@ -133,6 +133,15 @@ namespace RevitCabling.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Выберите лоток.
+        /// </summary>
+        public static string SelectCadleTrayToolTip {
+            get {
+                return ResourceManager.GetString("SelectCadleTrayToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Выберите электропотребитель.
         /// </summary>
         public static string SelectFixtureToolTip {

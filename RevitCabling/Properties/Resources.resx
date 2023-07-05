@@ -141,6 +141,9 @@
   <data name="PartOfCondutTypeName" xml:space="preserve">
     <value>Короб</value>
   </data>
+  <data name="SelectCadleTrayToolTip" xml:space="preserve">
+    <value>Выберите лоток</value>
+  </data>
   <data name="SelectFixtureToolTip" xml:space="preserve">
     <value>Выберите электропотребитель</value>
   </data>

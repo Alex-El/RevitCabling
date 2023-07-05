@@ -2,33 +2,32 @@
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using RevitCabling.Helpers;
-using System.Threading.Tasks;
 
 namespace RevitCabling.Services
 {
-    internal class SelectFixtureService : ExternalEventService
+    internal class SelectCableTrayService : ExternalEventService
     {
-        public SelectFixtureService(string name) : base(name) { }
+        public SelectCableTrayService(string serviceName) : base(serviceName) { }
 
         protected override APIServiceResult Execute(UIApplication app)
         {
-            Host.ProjectData.CurrentFixture = null;
-            
+            Host.ProjectData.CurrentCableTray = null;
+
             UIDocument uidoc = app.ActiveUIDocument;
 
             Reference reference = null;
             try
             {
-                reference = uidoc.Selection.PickObject(ObjectType.Element, new ElectricalFixtureFilter(), Properties.Resources.SelectFixtureToolTip);
+                reference = uidoc.Selection.PickObject(ObjectType.Element, new CableTrayFilter(), Properties.Resources.SelectCadleTrayToolTip);
             }
-            catch 
+            catch
             {
                 return APIServiceResult.Canceled;
             }
 
             if (reference != null)
             {
-                Host.ProjectData.CurrentFixture = reference;
+                Host.ProjectData.CurrentCableTray = reference;
             }
             else
             {

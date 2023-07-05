@@ -23,6 +23,8 @@ namespace RevitCabling
             Host.AddServiceEvent<DrawCircuitPathService>(new DrawCircuitPathService("DrawCircuitPath"));
             Host.AddServiceEvent<DeleteCircuitPathService>(new DeleteCircuitPathService("DeleteCircuitPath"));
             Host.AddServiceEvent<SelectFixtureService>(new SelectFixtureService("SelectFixture"));
+            Host.AddServiceEvent<SelectCableTrayService>(new SelectCableTrayService("SelectCableTray"));
+            Host.AddServiceEvent<EditCircuitPathService>(new EditCircuitPathService("EditCircuitPath"));
             //--------
 
             application.ControlledApplication.DocumentOpened += OnDocumentOpened;

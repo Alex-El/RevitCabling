@@ -1,11 +1,9 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using RevitCabling.Services;
 using System;
 using System.Linq;
 
-
-namespace RevitCabling.Helpers
+namespace RevitCabling.PluginBL
 {
     static class SetSharedParamRevitCommand
     {
