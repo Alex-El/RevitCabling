@@ -54,6 +54,7 @@ namespace RevitCabling.Services
                         if (gr != null)
                         {
                             gr.SetProjectionLineColor(color);
+                            gr.SetProjectionLineWeight(15);
                         }
                         doc.ActiveView.SetElementOverrides(id, gr);
 

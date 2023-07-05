@@ -55,6 +55,7 @@ namespace RevitCabling.PluginBL
                     }
                 }
             }
+            path.Add(pt1);
 
             return path;
         }
