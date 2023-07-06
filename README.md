@@ -22,7 +22,7 @@ Revit 2022
 
 Скачать msi, запустить.
 
-Кнопка запуска плагина:
+Кнопка запуска плагина Cabling -> Put cable into trays:
 ![](https://user-images.githubusercontent.com/83776033/251412503-25be1c98-1298-44a9-98a6-be9e9b722d49.PNG)
 
 Интерфейс (dockable - не блокирующее выполнение окно, позволяет прикрепление к интерфейсу Revit):
