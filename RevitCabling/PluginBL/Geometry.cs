@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using RevitCabling.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,17 @@ namespace RevitCabling.PluginBL
 {
     internal static class Geometry
     {
-        public static List<XYZ> CorrectCircuitPath(List<XYZ> initialPath, XYZ point1, XYZ point2)
+        public static List<XYZc> CorrectCircuitPath(XYZ point1, XYZ point2)
         {
+            var initialPath = Host.ProjectData.CorrectingPath;
+            var newPath = new List<XYZc>();
+
+
+
+            return newPath;
+
+
+
             XYZ startPt;
             XYZ endPt;
             if (point1.DistanceTo(initialPath[0]) < point2.DistanceTo(initialPath[0]))
@@ -57,7 +67,7 @@ namespace RevitCabling.PluginBL
             }
             path.Add(pt1);
 
-            return path;
+            //return path;
         }
     }
 }
