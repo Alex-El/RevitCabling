@@ -1,4 +1,5 @@
-﻿using RevitCabling.ViewModels;
+﻿using RevitCabling.Services;
+using RevitCabling.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,13 @@ namespace RevitCabling.Commands
             _mainVM = mainVM;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             _mainVM.OnBusy();
-            // BL
+
+            _ = await Host.GetService<DeleteCircuitPathService>().Run();
+            _ = await Host.GetService<ApplyCircuitPathService>().Run();
+
             _mainVM.OnOkExecute();
         }
     }

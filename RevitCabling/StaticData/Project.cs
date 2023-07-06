@@ -10,7 +10,18 @@ namespace RevitCabling.StaticData
     {
         public List<CableTray> CableTrays { get; set; } = new List<CableTray>();
         public List<ElementId> TextNoteIds { get; set; } = new List<ElementId>();
-        public List<XYZ> CurrentPath { get; set; } = new List<XYZ>();
+
+        public List<XYZ> CurrentPath 
+        {
+            get => _currentPath;
+            set
+            {
+                _currentPath = value;
+                _correctingPath = value.Select(s => new XYZc(s)).ToList();
+            }
+        }
+        List<XYZ> _currentPath = new List<XYZ>();
+
         public Reference CurrentFixture { get; set; } = null;
         public Reference CurrentCableTray { get; set; } = null;
         public List<ElementId> PathElementIds { get; set; } = new List<ElementId>();
@@ -21,7 +32,7 @@ namespace RevitCabling.StaticData
             set
             {
                 _correctingPath = value;
-                CurrentPath = value.Select(s => s as XYZ).ToList();
+                _currentPath = value.Select(s => s as XYZ).ToList();
             } 
         }
         List<XYZc> _correctingPath = new List<XYZc>();
