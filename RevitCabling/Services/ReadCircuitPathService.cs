@@ -31,7 +31,7 @@ namespace RevitCabling.Services
                 return APIServiceResult.Failed;
             }
 
-            Host.ProjectData.CurrentPath = system.GetCircuitPath().ToList();
+            Host.ProjectData.Path.CurrentPath = system.GetCircuitPath().ToList();
 
             return APIServiceResult.Succeeded;
         }

@@ -18,7 +18,8 @@ namespace RevitCabling.Services
             XYZ startP = location.Curve.GetEndPoint(0);
             XYZ endP = location.Curve.GetEndPoint(1);
 
-            Host.ProjectData.CorrectingPath = Geometry.CorrectCircuitPath(startP, endP);
+            //Host.ProjectData.CorrectingPath = Geometry.CorrectCircuitPath(startP, endP);
+            Host.ProjectData.Path.ApplyCableTray(startP, endP);
 
             return APIServiceResult.Succeeded;
         }

@@ -45,7 +45,7 @@ namespace RevitCabling.Services
                 {
                     tr.Start();
 
-                    var cp = Host.ProjectData.CurrentPath;
+                    var cp = Host.ProjectData.Path.CurrentPath;
 
                     for (int i = 0; i < cp.Count - 1; i++)
                     {

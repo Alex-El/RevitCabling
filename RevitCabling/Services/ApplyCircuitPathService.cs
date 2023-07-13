@@ -25,7 +25,7 @@ namespace RevitCabling.Services
                 {
                     tr.Start();
 
-                    system.SetCircuitPath(Host.ProjectData.CurrentPath);
+                    system.SetCircuitPath(Host.ProjectData.Path.CurrentPath);
 
                     tr.Commit();
                 }

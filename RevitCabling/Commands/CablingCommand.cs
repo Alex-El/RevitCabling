@@ -24,7 +24,7 @@ namespace RevitCabling.Commands
             var editPathSrvc = Host.GetService<EditCircuitPathService>();
             var deletePathSrvc = Host.GetService<DeleteCircuitPathService>();
 
-            Host.ProjectData.CurrentPath.Clear();
+            //Host.ProjectData.CurrentPath.Clear();
 
             var select_result = await selectFixtureSrvc.Run();
 
