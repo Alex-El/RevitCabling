@@ -12,6 +12,7 @@ namespace RevitCabling.PluginBL
     internal class PathGeometry
     {
         const double PRECISION = 0.2;
+        const double LASTSEGMENT = 3; // sign for path completed
 
         public List<XYZ> CurrentPath
         { 
@@ -25,6 +26,15 @@ namespace RevitCabling.PluginBL
 
         List<XYZ> _currentPath = new List<XYZ>();
         bool _onTray = false;
+
+        public bool PathValid()
+        {
+            if (Host.ProjectData.CurrentElectricalSystem != null)
+            {
+                return Host.ProjectData.CurrentElectricalSystem.IsCircuitPathValid(_currentPath);
+            }
+            return false;
+        }
 
         public void ApplyCableTray(XYZ point1, XYZ point2)
         {
@@ -54,6 +64,55 @@ namespace RevitCabling.PluginBL
             }
 
             _currentPath = InsertPoints(nearestPt1Indx, point1, point2, nearestPt2Indx);
+
+            if (IsPathCompleted())
+            {
+                AlignPath();
+            }
+        }
+
+        // Z alignment
+        private void AlignPath()
+        {
+            for (int i = 1; i < _currentPath.Count; i++)
+            {
+                AlignPoint(false, i);
+            }
+            //AlignPoint(false, 1);
+        }
+
+        private void AlignPoint(bool isForvard, int i)
+        {
+            XYZ correctedPt = _currentPath[i];
+            XYZ targetPt;
+            if (isForvard)
+            {
+                targetPt = _currentPath[i + 1];
+            }
+            else
+            {
+                targetPt = _currentPath[i - 1];
+            }
+
+            if (Math.Abs(correctedPt.Z - targetPt.Z) > PRECISION) // vertical case
+            {
+                correctedPt = new XYZ(targetPt.X, targetPt.Y, correctedPt.Z);
+            }
+            else // horizontal case
+            {
+                correctedPt = new XYZ(correctedPt.X, correctedPt.Y, targetPt.Z);
+            }
+
+            _currentPath[i] = correctedPt;
+        }
+
+        private bool IsPathCompleted()
+        {
+            if (_currentPath[_currentPath.Count - 1].DistanceTo(_currentPath[_currentPath.Count - 2]) < LASTSEGMENT)
+            {
+                return true;
+            }
+            return false;
         }
 
         private List<XYZ> InsertPoints(int nearestPt1Indx, XYZ point1, XYZ point2, int nearestPt2Indx)

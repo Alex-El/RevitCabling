@@ -13,7 +13,7 @@ namespace RevitCabling.Commands
         MainViewModel _mainVM { get; }
 
         public OkCablingCommand(MainViewModel mainVM) :
-             base((obj) => mainVM.CurrentUIMode == UIMode.Cabling || mainVM.CurrentUIMode == UIMode.TrayLoading)
+             base((obj) => mainVM.CurrentUIMode == UIMode.Cabling && Host.ProjectData.Path.PathValid())
         {
             _mainVM = mainVM;
         }

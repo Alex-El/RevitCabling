@@ -32,6 +32,7 @@ namespace RevitCabling.Services
             }
 
             Host.ProjectData.Path.CurrentPath = system.GetCircuitPath().ToList();
+            Host.ProjectData.CurrentElectricalSystem = system;
 
             return APIServiceResult.Succeeded;
         }

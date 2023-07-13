@@ -49,6 +49,9 @@ namespace RevitCabling.Commands
                         _ = await editPathSrvc.Run();
                         _ = await deletePathSrvc.Run();
                         _ = await drawCircPathSrvc.Run();
+
+                        // validate path
+
                     }
                 }
             }
