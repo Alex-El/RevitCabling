@@ -37,7 +37,9 @@ namespace RevitCabling.Services
             }
             else
             {
-                _tcs.TrySetException(_handler.Exception);
+                //_tcs.TrySetException(_handler.Exception);
+                Logger.Log(_handler.Exception);
+                TaskDialog.Show("Error", _handler.Exception.Message);
             }
         }
 

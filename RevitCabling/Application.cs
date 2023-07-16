@@ -13,21 +13,33 @@ namespace RevitCabling
     {
         public Result OnStartup(UIControlledApplication application)
         {
-            Host.Initialize(application);
+            Logger.InitMainLogger("RevitCablingLogger");
 
-            // Services
-            Host.AddServiceEvent<GetAllCableTraysService>(new GetAllCableTraysService("GetAllCableTrays"));
-            Host.AddServiceEvent<DrawTextNotesService>(new DrawTextNotesService("DrawTextNotes"));
-            Host.AddServiceEvent<DeleteTextNotesService>(new DeleteTextNotesService("DeleteTextNotes"));
-            Host.AddServiceEvent<ReadCircuitPathService>(new ReadCircuitPathService("ReadCircuitPath"));
-            Host.AddServiceEvent<DrawCircuitPathService>(new DrawCircuitPathService("DrawCircuitPath"));
-            Host.AddServiceEvent<DeleteCircuitPathService>(new DeleteCircuitPathService("DeleteCircuitPath"));
-            Host.AddServiceEvent<SelectFixtureService>(new SelectFixtureService("SelectFixture"));
-            Host.AddServiceEvent<SelectCableTrayService>(new SelectCableTrayService("SelectCableTray"));
-            Host.AddServiceEvent<EditCircuitPathService>(new EditCircuitPathService("EditCircuitPath"));
-            Host.AddServiceEvent<ApplyCircuitPathService>(new ApplyCircuitPathService("ApplyCircuitPath"));
+            try
+            {
+                Host.Initialize(application);
 
-            //--------
+                // Services
+                Host.AddServiceEvent<GetAllCableTraysService>(new GetAllCableTraysService("GetAllCableTrays"));
+                Host.AddServiceEvent<DrawTextNotesService>(new DrawTextNotesService("DrawTextNotes"));
+                Host.AddServiceEvent<DeleteTextNotesService>(new DeleteTextNotesService("DeleteTextNotes"));
+                Host.AddServiceEvent<ReadCircuitPathService>(new ReadCircuitPathService("ReadCircuitPath"));
+                Host.AddServiceEvent<DrawCircuitPathService>(new DrawCircuitPathService("DrawCircuitPath"));
+                Host.AddServiceEvent<DeleteCircuitPathService>(new DeleteCircuitPathService("DeleteCircuitPath"));
+                Host.AddServiceEvent<SelectFixtureService>(new SelectFixtureService("SelectFixture"));
+                Host.AddServiceEvent<SelectCableTrayService>(new SelectCableTrayService("SelectCableTray"));
+                Host.AddServiceEvent<EditCircuitPathService>(new EditCircuitPathService("EditCircuitPath"));
+                Host.AddServiceEvent<ApplyCircuitPathService>(new ApplyCircuitPathService("ApplyCircuitPath"));
+
+                //--------
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                TaskDialog.Show("Error", ex.Message);
+
+                return Result.Failed;
+            }
 
             application.ControlledApplication.DocumentOpened += OnDocumentOpened;
 

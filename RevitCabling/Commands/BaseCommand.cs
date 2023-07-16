@@ -21,7 +21,19 @@ namespace RevitCabling.Commands
             return this._canExecute == null || this._canExecute(parameter);
         }
 
-        public abstract void Execute(object parameter);
+        public abstract void Execute();
+
+        public void Execute(object parameter)
+        {
+            try
+            {
+                Execute();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+            }
+        }
 
         public event EventHandler CanExecuteChanged
         {

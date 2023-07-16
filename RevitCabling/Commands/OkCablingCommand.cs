@@ -18,7 +18,7 @@ namespace RevitCabling.Commands
             _mainVM = mainVM;
         }
 
-        public override async void Execute(object parameter)
+        public override async void Execute()
         {
             _mainVM.OnBusy();
 

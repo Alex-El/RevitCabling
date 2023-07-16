@@ -27,6 +27,11 @@ namespace RevitCabling.PluginBL
         List<XYZ> _currentPath = new List<XYZ>();
         bool _onTray = false;
 
+        //public PathGeometry()
+        //{
+        //    throw new Exception("Init exeption test");
+        //}
+
         public bool PathValid()
         {
             if (Host.ProjectData.CurrentElectricalSystem != null)
