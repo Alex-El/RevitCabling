@@ -23,6 +23,7 @@ namespace RevitCabling.Commands
             var drawCircPathSrvc = Host.GetService<DrawCircuitPathService>();
             var editPathSrvc = Host.GetService<EditCircuitPathService>();
             var deletePathSrvc = Host.GetService<DeleteCircuitPathService>();
+            Host.ProjectData.ClearCableTraysWithCables();
 
             //Host.ProjectData.CurrentPath.Clear();
 
@@ -49,6 +50,7 @@ namespace RevitCabling.Commands
                         _ = await editPathSrvc.Run();
                         _ = await deletePathSrvc.Run();
                         _ = await drawCircPathSrvc.Run();
+                        Host.ProjectData.AddCurrentCableToParam();
 
                         // validate path
 

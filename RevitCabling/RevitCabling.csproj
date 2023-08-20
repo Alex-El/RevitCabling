@@ -100,6 +100,7 @@
     <Compile Include="Services\SelectCableTrayService.cs" />
     <Compile Include="Services\SelectFixtureService.cs" />
     <Compile Include="PluginBL\SetSharedParamRevitCommand.cs" />
+    <Compile Include="Services\WriteCableToParamService.cs" />
     <Compile Include="StaticData\Project.cs" />
     <Compile Include="StaticData\Settings.cs" />
     <Compile Include="Startup.cs" />

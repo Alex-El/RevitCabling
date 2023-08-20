@@ -30,6 +30,7 @@ namespace RevitCabling
                 Host.AddServiceEvent<SelectCableTrayService>(new SelectCableTrayService("SelectCableTray"));
                 Host.AddServiceEvent<EditCircuitPathService>(new EditCircuitPathService("EditCircuitPath"));
                 Host.AddServiceEvent<ApplyCircuitPathService>(new ApplyCircuitPathService("ApplyCircuitPath"));
+                Host.AddServiceEvent<WriteCableToParamService>(new WriteCableToParamService("WriteCableToParam"));
 
                 //--------
             }

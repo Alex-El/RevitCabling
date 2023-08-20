@@ -24,6 +24,7 @@ namespace RevitCabling.Commands
 
             _ = await Host.GetService<DeleteCircuitPathService>().Run();
             _ = await Host.GetService<ApplyCircuitPathService>().Run();
+            _ = await Host.GetService<WriteCableToParamService>().Run();
 
             _mainVM.OnOkExecute();
         }
