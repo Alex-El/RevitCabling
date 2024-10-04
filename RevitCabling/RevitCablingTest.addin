@@ -2,8 +2,8 @@
 <RevitAddIns>
 	<AddIn Type="Application">
 		<Name>RevitCabling</Name>
-		<Assembly>RevitCabling/RevitCabling.dll</Assembly>
-		<AddInId>349B7A00-C359-46B8-9FBF-7A6746341810</AddInId>
+		<Assembly>C:\tmp\revit\RevitCabling.dll</Assembly>
+		<AddInId>99800FC8-580E-4671-AEA0-EAC7D4E1149F</AddInId>
 		<FullClassName>RevitCabling.Application</FullClassName>
 		<VendorId>ADSK</VendorId>
 	</AddIn>

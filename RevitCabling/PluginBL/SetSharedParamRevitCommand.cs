@@ -13,7 +13,7 @@ namespace RevitCabling.PluginBL
 
             if (dfile == null )
             {
-                TaskDialog.Show("Error", "Shared parameter file not found");
+                TaskDialog.Show("Error", "Shared parameter file not found. \nPlease add a Shared parameter file to the project.");
                 return Result.Failed;
             }
 
@@ -44,7 +44,7 @@ namespace RevitCabling.PluginBL
                 cablesGroup = shareParamGroups.Create(Properties.Resources.CableParameterGroupName);
                 //DefinitionGroup myGroup = myGroups.Create(Properties.Resources.CableParameterGroupName);
                 // create an instance definition in definition group MyParameters
-                ExternalDefinitionCreationOptions option = new ExternalDefinitionCreationOptions(Properties.Resources.CableParameterName, ParameterType.Text);
+                ExternalDefinitionCreationOptions option = new ExternalDefinitionCreationOptions(Properties.Resources.CableParameterName, SpecTypeId.String.Text);
                 // Don't let the user modify the value, only the API
                 option.UserModifiable = false;
                 // Set tooltip

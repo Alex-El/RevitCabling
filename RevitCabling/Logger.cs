@@ -20,8 +20,17 @@ namespace RevitCabling
             mainlogger = LogManager.GetLogger(name, typeof(Application));
             string LogFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), 
                 "RevitCablingPlugin", 
-                "Version" + " " + 2022, 
-                "Log", "RevitCabling.log");
+                "Version_" +
+#if v22
+                2022 +
+#endif
+#if v23
+                2023 +
+#endif
+#if v24
+                2024 +
+#endif
+                "_Log", "RevitCabling.log");
             RollingFileAppender LogFile = new RollingFileAppender();
             LogFile.File = LogFilePath;
             LogFile.MaxSizeRollBackups = 10;

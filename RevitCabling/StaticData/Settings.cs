@@ -41,8 +41,38 @@ namespace RevitCabling.StaticData
             AppDllFullName = Path.Combine(Properties.Settings.Default.DebugAppPath, Properties.Settings.Default.AssembleName);
             EntryPointUI = Properties.Settings.Default.EntryPoint;
 #else
-
+            //IconPath = Path.Combine(Properties.Settings.Default.DebugAppPath, Properties.Settings.Default.ImageFolderName);
+            //AppDllFullName = Path.Combine(Properties.Settings.Default.DebugAppPath, Properties.Settings.Default.AssembleName);
+            //EntryPointUI = Properties.Settings.Default.EntryPoint;
 #endif
+#if v22
+            AppDllFullName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Properties.Settings.Default.v22AppPath,
+                Properties.Settings.Default.AssembleName);
+            IconPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Properties.Settings.Default.v22AppPath,
+                Properties.Settings.Default.ImageFolderName);
+            EntryPointUI = Properties.Settings.Default.EntryPoint;
+#endif
+#if v23
+            AppDllFullName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Properties.Settings.Default.v23AppPath,
+                Properties.Settings.Default.AssembleName);
+            IconPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Properties.Settings.Default.v23AppPath,
+                Properties.Settings.Default.ImageFolderName);
+            EntryPointUI = Properties.Settings.Default.EntryPoint;
+#endif
+#if v24
+            AppDllFullName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Properties.Settings.Default.v24AppPath,
+                Properties.Settings.Default.AssembleName);
+            IconPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Properties.Settings.Default.v24AppPath,
+                Properties.Settings.Default.ImageFolderName);
+            EntryPointUI = Properties.Settings.Default.EntryPoint;
+#endif
+
         }
     }
 }

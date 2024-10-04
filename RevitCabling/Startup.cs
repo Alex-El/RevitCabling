@@ -12,11 +12,13 @@ namespace RevitCabling
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Result result = Result.Succeeded;
-            Host.DockablePanel.Show();
-
             try
             {
                 result = SetSharedParamRevitCommand.Execute(commandData.Application);
+                if (result == Result.Succeeded)
+                {
+                    Host.DockablePanel.Show();
+                }
             }
             catch (Exception ex)
             {
