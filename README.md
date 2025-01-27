@@ -55,12 +55,9 @@ Apache license 2.0
 eltsov.online@gmail.com
 
 ## ВАЖНО:
-Проект выполнен с целью доработки сообществом. Реализована сама идея, но отладка бизнес логики не выполнена.
 
 При построении трассы происходит проверка правильности геометрии трассы. Ревит имеет следующие допущения
 ```
 The list of the electrical system circuit path node position is not valid. The length of the list should be more than one, the first node should be the position of the panel where the circuit begins at, the adjacent nodes should not be too close, and should be in the same level or on the same vertical line, to keep each segment of the circuit path always horizontal or vertical. Also note that the first node position should be the position of the connector (the one connects to the circuit) of the panel, but not the origin of the panel instance.
 ```
 Кнопка OK не будет активна пока эти условя не выполнены.
-
-PS. Чтобы реализовать идею до конца автору нужна мотивация - это могут быть деньги или / и единомышленики, готовые потрудится над проектом ;)
